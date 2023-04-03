@@ -1,6 +1,10 @@
 import Formulario from "./Formulario"
+import usePersonaje from "../hook/usePersonaje"
+import ListadoPersonajes from "./ListadoPersonajes"
 
 const AppPersonaje = () => {
+  const { personaje, setPersonaje } = usePersonaje()
+
   return (
     <>
       <header className="my-10">
@@ -10,6 +14,7 @@ const AppPersonaje = () => {
       </header>
       <main className="bg-white md:w-2/3 lg:w-2/4 mx-auto shadow-md rounded-lg p-10">
         <Formulario />
+        <ListadoPersonajes />
       </main>
     </>
   )

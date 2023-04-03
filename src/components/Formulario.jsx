@@ -1,15 +1,31 @@
+import { useState } from "react"
+import usePersonaje from "../hook/usePersonaje"
+
 const Formulario = () => {
+  const [busqueda, setBusqueda] = useState({})
+  const { personaje, setPersonaje } = usePersonaje()
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setBusqueda(personaje)
+  }
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="mt-5 mb-3 font-bold text-black uppercase flex justify-center">
           <div>
             <input
               type="text"
               required
+              name="nombre"
               placeholder="Nombre del Personaje"
               className="w-80 px-50 m-2 py-5 border-none outline-none rounded-xl shadow-lg text-center"></input>
-            <button className=" shadow-md bg-gradient-to-r from-purple-500 to bg-indigo-800 rounded-full px-6 h-16 hover:bg-purple-400">
+            <button
+              onChange={(e) =>
+                setBusqueda({ ...busqueda, [e.target.name]: target.value })
+              }
+              className=" shadow-md bg-gradient-to-r from-purple-500 to bg-indigo-800 rounded-full px-6 h-16 hover:bg-purple-400">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
