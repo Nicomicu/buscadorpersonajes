@@ -1,12 +1,15 @@
-import AppPersonaje from "./components/AppPersonaje"
-import { PersonajeProvider } from "./context/PersonajeProvider"
+import { UsuarioProvider } from "./context/UsuarioProvider"
+import Search from "./components/Search"
+
+import PreviewUsuario from "./components/PreviewUsuario"
 
 function App() {
   return (
     <>
-      <PersonajeProvider>
-        <AppPersonaje />
-      </PersonajeProvider>
+      <UsuarioProvider>
+        <Search />
+        <PreviewUsuario />
+      </UsuarioProvider>
     </>
   )
 }
