@@ -35,14 +35,14 @@ const Search = () => {
                 placeholder="Nombre del Usuario"
                 className="w-80 px-50 m-2 py-5 border-none outline-none rounded-xl shadow-lg text-center"
               />
-              <button className=" shadow-md bg-gradient-to-r from-purple-500 to bg-indigo-800 rounded-full px-6 h-16 hover:bg-purple-400">
+              <button className="shadow-md bg-gradient-to-r from-purple-500 to bg-indigo-800 rounded-full px-6 h-16 hover:bg-purple-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="white"
-                  className="w-5 h-5 ">
+                  className="w-6 h-6 ">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -54,7 +54,7 @@ const Search = () => {
           </div>
         </form>
       </main>
-      //Todo: LISTA DE USUARIOS
+
       <h1 className="mt-20 text-white text-center text-4xl font-black">
         Lista de Usuarios:
       </h1>
