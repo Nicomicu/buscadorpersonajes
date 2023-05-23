@@ -6,18 +6,17 @@ const UsuariosNuevos = ({ nombre, email, empresa }) => {
       <div>
         <span className="font-black block text-left text-black text-base">
           Nombre:
-          <p className="inline-block font-normal m-1">{nombre}</p>
+          <p className="inline-block mx-1 font-normal">{nombre}</p>
         </span>
         <span className="font-black block text-black text-left text-base ">
           Email:
-          <p className="inline-block font-normal m-1">{email}</p>
+          <p className="inline-block mx-1 font-normal">{email}</p>
         </span>
         <span className="font-black block text-black text-left text-base ">
           Empresa:
-          <p className="inline-block font-normal m-1">{empresa}</p>
+          <p className="inline-block mx-1 font-normal">{empresa}</p>
         </span>
       </div>
-
       <BotonEliminar />
     </div>
   )

@@ -1,3 +1,5 @@
+import useUsuario from "../hook/useUsuario"
+
 const BotonEliminar = () => {
   return (
     <div className="flex items-center">

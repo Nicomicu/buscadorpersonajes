@@ -11,7 +11,8 @@ const UsuarioProvider = ({ children }) => {
   const consultandoApi = async () => {
     setTimeout(() => {
       setCargando(true)
-    }, 3000)
+    }, 5000)
+
     try {
       const { data } = await axios("https://jsonplaceholder.typicode.com/users")
       setUsuarios(data)
@@ -31,7 +32,12 @@ const UsuarioProvider = ({ children }) => {
 
   return (
     <UsuarioContext.Provider
-      value={{ usuarios, setUsuarios, guardarUsuario, nuevoUsuarios }}>
+      value={{
+        usuarios,
+        setUsuarios,
+        guardarUsuario,
+        nuevoUsuarios,
+      }}>
       {children}
     </UsuarioContext.Provider>
   )
