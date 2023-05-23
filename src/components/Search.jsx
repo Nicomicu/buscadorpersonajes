@@ -64,7 +64,6 @@ const Search = () => {
           <PreviewUsuario
             // TODO La manera que tendria que hacerlo es usuarios={usuarios} y en prewiew usuarios hacer destructuracion pero no funciona
             key={usuario.id}
-            usuario={usuario}
             name={usuario.name}
             email={usuario.email}
             company={usuario.company.name}

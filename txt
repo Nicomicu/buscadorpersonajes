@@ -1,2 +1,0 @@
-    nuevoUsuario.id = generarId()
-    setNuevoUsuario([...nuevoUsuario, usuarios])

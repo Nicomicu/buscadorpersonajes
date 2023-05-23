@@ -1,15 +1,24 @@
-import PreviewUsuario from "./PreviewUsuario"
-import useUsuario from "../hook/useUsuario"
+import BotonEliminar from "./BotonEliminar"
 
-const UsuariosNuevos = () => {
-  const { nuevoUsuario } = useUsuario()
-
+const UsuariosNuevos = ({ nombre, email, empresa }) => {
   return (
-    <div>
-      <header className="text-white font-bold text-4xl text-center">
-        <h1>Usuarios Creados:</h1>
-      </header>
-      <PreviewUsuario />
+    <div className="bg-white md:w-2/3 lg:w-2/4 mx-auto shadow-lg rounded-md p-8 mb-10 mt-10 flex justify-between">
+      <div>
+        <span className="font-black block text-left text-black text-base">
+          Nombre:
+          <p className="inline-block font-normal m-1">{nombre}</p>
+        </span>
+        <span className="font-black block text-black text-left text-base ">
+          Email:
+          <p className="inline-block font-normal m-1">{email}</p>
+        </span>
+        <span className="font-black block text-black text-left text-base ">
+          Empresa:
+          <p className="inline-block font-normal m-1">{empresa}</p>
+        </span>
+      </div>
+
+      <BotonEliminar />
     </div>
   )
 }

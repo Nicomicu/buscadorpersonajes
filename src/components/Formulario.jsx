@@ -8,6 +8,8 @@ const Formulario = () => {
   const [empresa, setEmpresa] = useState("")
   const [error, setError] = useState("")
 
+  const { guardarUsuario } = useUsuario()
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if ([nombre, email, empresa].includes("")) {
@@ -18,6 +20,10 @@ const Formulario = () => {
       }, 1000)
       return
     }
+    guardarUsuario({ nombre, email, empresa })
+    setNombre("")
+    setEmail("")
+    setEmpresa("")
   }
 
   return (

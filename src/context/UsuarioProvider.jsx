@@ -6,8 +6,7 @@ const UsuarioContext = createContext()
 const UsuarioProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([])
   const [cargando, setCargando] = useState(false)
-
-  const [nuevoUsuario, setNuevoUsuario] = useState([])
+  const [nuevoUsuarios, setNuevoUsuarios] = useState([])
 
   const consultandoApi = async () => {
     setTimeout(() => {
@@ -25,12 +24,14 @@ const UsuarioProvider = ({ children }) => {
     consultandoApi()
   }, [])
 
-  const guardarUsuario = (usuarios) => {
-    console.log(usuarios)
+  const guardarUsuario = (nuevoUsuario) => {
+    nuevoUsuario.id = generarId()
+    setNuevoUsuarios([...nuevoUsuarios, nuevoUsuario])
   }
 
   return (
-    <UsuarioContext.Provider value={{ usuarios, setUsuarios, guardarUsuario }}>
+    <UsuarioContext.Provider
+      value={{ usuarios, setUsuarios, guardarUsuario, nuevoUsuarios }}>
       {children}
     </UsuarioContext.Provider>
   )
