@@ -2,6 +2,7 @@ import { useState } from "react"
 import useUsuario from "../hook/useUsuario.jsx"
 import Cargando from "./Cargando"
 import PreviewUsuario from "./PreviewUsuario"
+import UsuariosNuevos from "./UsuariosNuevos.jsx"
 
 const Search = () => {
   const [search, setSearch] = useState("")
@@ -74,6 +75,8 @@ const Search = () => {
           <Cargando />
         </p>
       )}
+
+      <UsuariosNuevos />
     </>
   )
 }

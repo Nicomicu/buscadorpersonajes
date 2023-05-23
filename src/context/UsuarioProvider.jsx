@@ -1,11 +1,13 @@
 import { createContext, useState, useEffect } from "react"
 import axios from "axios"
-
+import generarId from "../helpers/generarId"
 const UsuarioContext = createContext()
 
 const UsuarioProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([])
   const [cargando, setCargando] = useState(false)
+
+  const [nuevoUsuario, setNuevoUsuario] = useState([])
 
   const consultandoApi = async () => {
     setTimeout(() => {
@@ -23,8 +25,12 @@ const UsuarioProvider = ({ children }) => {
     consultandoApi()
   }, [])
 
+  const guardarUsuario = (usuarios) => {
+    console.log(usuarios)
+  }
+
   return (
-    <UsuarioContext.Provider value={{ usuarios, setUsuarios }}>
+    <UsuarioContext.Provider value={{ usuarios, setUsuarios, guardarUsuario }}>
       {children}
     </UsuarioContext.Provider>
   )

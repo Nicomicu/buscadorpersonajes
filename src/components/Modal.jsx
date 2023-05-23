@@ -1,13 +1,13 @@
 import Formulario from "./Formulario"
 
-const Modal = ({ setModal, animarModal }) => {
+const Modal = ({ setModal }) => {
   const ocultarModal = () => {
     setModal(false)
   }
 
   return (
     <>
-      <div className="fixed inset-0 flex justify-end  bg-black bg-opacity-80  overflow-y-hidden">
+      <div className="fixed inset-0 flex justify-end  bg-black bg-opacity-80">
         <button
           onClick={ocultarModal}
           className="shadow-md m-10 bg-gradient-to-r from-purple-500 to bg-indigo-800 rounded-full px-6 h-16">
@@ -20,7 +20,7 @@ const Modal = ({ setModal, animarModal }) => {
           </svg>
         </button>
       </div>
-      <Formulario animarModal={animarModal} />
+      <Formulario />
     </>
   )
 }
