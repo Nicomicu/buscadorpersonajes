@@ -1,9 +1,8 @@
+import { useState } from "react"
 import useUsuario from "../hook/useUsuario"
 
 const PreviewUsuario = ({ name, email, company, id }) => {
-  const eliminarUsuarios = (id) => {
-    console.log("eliminando", id)
-  }
+  const { eliminarUsuarios } = useUsuario()
 
   return (
     <>

@@ -1,9 +1,12 @@
 import useUsuario from "../hook/useUsuario"
 
-const BotonEliminar = () => {
+const BotonEliminar = ({ id }) => {
+  const { eliminarUsuarios } = useUsuario()
+
   return (
     <div className="flex items-center">
       <button
+        onClick={() => eliminarUsuarios(id)}
         type="button"
         className="
     bg-red-500 content-center right-2 text-white rounded-lg py-1 px-5 shadow-lg uppercase hover:bg-red-600 transition-colors">

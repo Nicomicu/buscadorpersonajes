@@ -30,6 +30,11 @@ const UsuarioProvider = ({ children }) => {
     setNuevoUsuarios([...nuevoUsuarios, nuevoUsuario])
   }
 
+  const eliminarUsuarios = (id) => {
+    const usuariosActualizados = usuarios.filter((usuario) => usuario.id !== id)
+    setUsuarios(usuariosActualizados)
+  }
+
   return (
     <UsuarioContext.Provider
       value={{
@@ -37,6 +42,7 @@ const UsuarioProvider = ({ children }) => {
         setUsuarios,
         guardarUsuario,
         nuevoUsuarios,
+        eliminarUsuarios,
       }}>
       {children}
     </UsuarioContext.Provider>
