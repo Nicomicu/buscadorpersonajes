@@ -7,6 +7,7 @@ const UsuarioProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([])
   const [cargando, setCargando] = useState(false)
   const [nuevoUsuarios, setNuevoUsuarios] = useState([])
+  const [modalFormulario, setModalFormulario] = useState(false)
 
   const consultandoApi = async () => {
     setTimeout(() => {
@@ -25,9 +26,14 @@ const UsuarioProvider = ({ children }) => {
     consultandoApi()
   }, [])
 
+  const handleModal = () => {
+    setModalFormulario(!modalFormulario)
+  }
+
   const guardarUsuario = (nuevoUsuario) => {
     nuevoUsuario.id = generarId()
-    setNuevoUsuarios([...nuevoUsuarios, nuevoUsuario])
+    setUsuarios([...usuarios, nuevoUsuario])
+    console.log(nuevoUsuario)
   }
 
   const eliminarUsuarios = (id) => {
@@ -43,6 +49,8 @@ const UsuarioProvider = ({ children }) => {
         guardarUsuario,
         nuevoUsuarios,
         eliminarUsuarios,
+        modalFormulario,
+        handleModal,
       }}>
       {children}
     </UsuarioContext.Provider>

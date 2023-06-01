@@ -2,11 +2,12 @@ import { useState } from "react"
 import useUsuario from "../hook/useUsuario.jsx"
 import Cargando from "./Cargando"
 import PreviewUsuario from "./PreviewUsuario"
-import UsuariosNuevos from "./UsuariosNuevos.jsx"
 
 const Search = () => {
   const [search, setSearch] = useState("")
   const { usuarios, setUsuarios } = useUsuario()
+
+  const { nuevoUsuarios } = useUsuario()
 
   const searcher = (e) => {
     setSearch(e.target.value)
@@ -67,7 +68,7 @@ const Search = () => {
             id={usuario.id}
             name={usuario.name}
             email={usuario.email}
-            company={usuario.company.name}
+            company={usuario.company?.name}
           />
         ))
       ) : (

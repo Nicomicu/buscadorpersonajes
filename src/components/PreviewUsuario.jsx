@@ -15,7 +15,8 @@ const PreviewUsuario = ({ name, email, company, id }) => {
             <span className="font-black">Email:</span> {email}
           </p>
           <p className="text-base">
-            <span className="font-black">Empresa:</span> {company}
+            <span className="font-black">Empresa: </span>
+            {company}
           </p>
         </div>
 
