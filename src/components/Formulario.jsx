@@ -3,28 +3,28 @@ import { Dialog, Transition } from "@headlessui/react"
 import useUsuario from "../hook/useUsuario"
 import Error from "./Error"
 
-const Formulario = () => {
+const Formulario = ({ modalFormulario, handleModal }) => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
-  const [company, setCompany] = useState("")
+  const [address, setAddress] = useState("")
   const [error, setError] = useState("")
 
-  const { guardarUsuario, modalFormulario, handleModal } = useUsuario()
+  const { nuevoUsuario, guardarUsuario } = useUsuario()
 
-  const handleSubmit = (e) => {
+  const handleNuevoUsuario = (e) => {
     e.preventDefault()
-    if ([name, email, company].includes("")) {
+    if ([name, email, address].includes("")) {
       setError("error")
 
       setTimeout(() => {
         setError("")
       }, 1000)
-      return
     }
-    guardarUsuario({ name, email, company })
+    const nuevoUsuario = { name, email, address }
+    guardarUsuario(nuevoUsuario)
     setName("")
     setEmail("")
-    setCompany("")
+    setAddress("")
   }
 
   return (
@@ -64,7 +64,7 @@ const Formulario = () => {
                 <div className="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
                   <button
                     type="button"
-                    className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="bg-white rounded-md text-gray-500 hover:text-gray-800"
                     onClick={handleModal}>
                     <span className="sr-only">Cerrar</span>
                     <svg
@@ -85,13 +85,13 @@ const Formulario = () => {
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
                     <Dialog.Title
                       as="h3"
-                      className="text-lg leading-6 font-bold text-gray-900 text-center uppercase">
-                      Crea un USUARIO
+                      className="leading-6 font-bold text-gray-900 text-center uppercase text-2xl">
+                      CREA UN USUARIO
                     </Dialog.Title>
 
                     {error && <Error />}
 
-                    <form onSubmit={handleSubmit} className="my-10">
+                    <form onSubmit={handleNuevoUsuario} className="my-10">
                       <div className="mb-5">
                         <label
                           className="text-gray-700 uppercase font-bold text-sm"
@@ -102,7 +102,7 @@ const Formulario = () => {
                           type="text"
                           id="name"
                           className="p-2 w-full rounded-md text-gray-400 bg-slate-100 shadow-md mt-2 outline-none"
-                          placeholder="Nombre de la Tarea"
+                          placeholder="Nombre de Usuario"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                         />
@@ -118,7 +118,7 @@ const Formulario = () => {
                           type="text"
                           id="email"
                           className="p-2 w-full rounded-md text-gray-400 bg-slate-100 shadow-md mt-2 outline-none"
-                          placeholder="Nombre de la Tarea"
+                          placeholder="Escriba su Email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                         />
@@ -128,21 +128,21 @@ const Formulario = () => {
                         <label
                           className="text-gray-700 uppercase font-bold text-sm"
                           htmlFor="company">
-                          Empresa
+                          Ciudad:
                         </label>
                         <input
                           type="text"
                           id="company"
                           className="p-2 w-full rounded-md text-gray-400 bg-slate-100 shadow-md mt-2 outline-none"
-                          placeholder="describa su tarea"
-                          value={company}
-                          onChange={(e) => setCompany(e.target.value)}
+                          placeholder="Coloque su Empresa"
+                          value={address}
+                          onChange={(e) => setAddress(e.target.value)}
                         />
                       </div>
 
                       <input
                         type="submit"
-                        value="Crear Tarea"
+                        value="Crear Usuario"
                         className="bg-purple-600
                     hover:bg-purple-700  items-center text-sm p-3 rounded-md text-white w-full uppercase font-bold cursor-pointer transition-colors"
                       />

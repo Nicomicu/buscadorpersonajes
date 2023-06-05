@@ -5,9 +5,7 @@ import PreviewUsuario from "./PreviewUsuario"
 
 const Search = () => {
   const [search, setSearch] = useState("")
-  const { usuarios, setUsuarios } = useUsuario()
-
-  const { nuevoUsuarios } = useUsuario()
+  const { usuarios, setUsuarios, guardarUsuario } = useUsuario()
 
   const searcher = (e) => {
     setSearch(e.target.value)
@@ -18,7 +16,6 @@ const Search = () => {
     : usuarios.filter((usuario) =>
         usuario.name.toLowerCase().includes(search.toLocaleLowerCase())
       )
-
   return (
     <>
       <header className="my-10">
@@ -63,12 +60,11 @@ const Search = () => {
       {usuarios.length ? (
         resultado.map((usuario) => (
           <PreviewUsuario
-            // TODO La manera que tendria que hacerlo es usuarios={usuarios} y en prewiew usuarios hacer destructuracion pero no funciona
             key={usuario.id}
             id={usuario.id}
             name={usuario.name}
             email={usuario.email}
-            company={usuario.company?.name}
+            address={usuario.address.city}
           />
         ))
       ) : (

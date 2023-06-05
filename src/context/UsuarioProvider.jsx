@@ -1,13 +1,13 @@
 import { createContext, useState, useEffect } from "react"
 import axios from "axios"
 import generarId from "../helpers/generarId"
+
 const UsuarioContext = createContext()
 
 const UsuarioProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([])
   const [cargando, setCargando] = useState(false)
-  const [nuevoUsuarios, setNuevoUsuarios] = useState([])
-  const [modalFormulario, setModalFormulario] = useState(false)
+  const [nuevoUsuario, setNuevoUsuario] = useState([])
 
   const consultandoApi = async () => {
     setTimeout(() => {
@@ -18,22 +18,20 @@ const UsuarioProvider = ({ children }) => {
       const { data } = await axios("https://jsonplaceholder.typicode.com/users")
       setUsuarios(data)
       setCargando(false)
+      console.log(data)
     } catch (error) {
       console.log(error)
     }
   }
+
   useEffect(() => {
     consultandoApi()
   }, [])
 
-  const handleModal = () => {
-    setModalFormulario(!modalFormulario)
-  }
-
   const guardarUsuario = (nuevoUsuario) => {
     nuevoUsuario.id = generarId()
     setUsuarios([...usuarios, nuevoUsuario])
-    console.log(nuevoUsuario)
+    setNuevoUsuario(nuevoUsuario)
   }
 
   const eliminarUsuarios = (id) => {
@@ -46,11 +44,9 @@ const UsuarioProvider = ({ children }) => {
       value={{
         usuarios,
         setUsuarios,
-        guardarUsuario,
-        nuevoUsuarios,
+        nuevoUsuario,
         eliminarUsuarios,
-        modalFormulario,
-        handleModal,
+        guardarUsuario,
       }}>
       {children}
     </UsuarioContext.Provider>

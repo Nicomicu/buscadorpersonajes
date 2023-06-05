@@ -1,7 +1,7 @@
 import { useState } from "react"
 import useUsuario from "../hook/useUsuario"
 
-const PreviewUsuario = ({ name, email, company, id }) => {
+const PreviewUsuario = ({ name, email, address, id }) => {
   const { eliminarUsuarios } = useUsuario()
 
   return (
@@ -15,8 +15,8 @@ const PreviewUsuario = ({ name, email, company, id }) => {
             <span className="font-black">Email:</span> {email}
           </p>
           <p className="text-base">
-            <span className="font-black">Empresa: </span>
-            {company}
+            <span className="font-black">Ciudad: </span>
+            {address}
           </p>
         </div>
 

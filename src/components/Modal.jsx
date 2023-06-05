@@ -1,19 +1,11 @@
 import { useState } from "react"
 import Formulario from "./Formulario"
-import useUsuario from "../hook/useUsuario"
 
-const AgregarUsuario = () => {
-  const [modal, setModal] = useState(false)
-  const [animarModal, setAnimarModal] = useState(false)
+const Modal = () => {
+  const [modalFormulario, setModalFormulario] = useState(false)
 
-  const { modalFormulario, handleModal } = useUsuario()
-
-  const handleNuevoUsuario = () => {
-    setModal(true)
-
-    setTimeout(() => {
-      setAnimarModal(true)
-    }, 3000)
+  const handleModal = () => {
+    setModalFormulario(!modalFormulario)
   }
 
   return (
@@ -37,9 +29,8 @@ const AgregarUsuario = () => {
           </svg>
         </button>
       </div>
-      <Formulario />
+      <Formulario handleModal={handleModal} modalFormulario={modalFormulario} />
     </>
   )
 }
-
-export default AgregarUsuario
+export default Modal

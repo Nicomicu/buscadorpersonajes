@@ -1,6 +1,6 @@
 const Cargando = () => {
   return (
-    <div className="bg-white  md:w-2/3 lg:w-2/4 mx-auto shadow-lg rounded-md p-10 mb-10 mt-10">
+    <div className="bg-white md:w-2/3 lg:w-2/4 mx-auto shadow-lg rounded-md p-10 mb-10 mt-10">
       <div className="animate-pulse flex space-x-10">
         <div className="rounded-full bg-gray-200 h-10 w-10"></div>
         <div className="flex-1 space-y-6 py-1">
