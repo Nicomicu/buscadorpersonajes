@@ -7,7 +7,6 @@ const UsuarioContext = createContext()
 const UsuarioProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState([])
   const [cargando, setCargando] = useState(false)
-  const [nuevoUsuario, setNuevoUsuario] = useState([])
 
   const consultandoApi = async () => {
     setTimeout(() => {
@@ -18,7 +17,6 @@ const UsuarioProvider = ({ children }) => {
       const { data } = await axios("https://jsonplaceholder.typicode.com/users")
       setUsuarios(data)
       setCargando(false)
-      console.log(data)
     } catch (error) {
       console.log(error)
     }
@@ -31,9 +29,7 @@ const UsuarioProvider = ({ children }) => {
   const guardarUsuario = (nuevoUsuario) => {
     nuevoUsuario.id = generarId()
     setUsuarios([...usuarios, nuevoUsuario])
-    setNuevoUsuario(nuevoUsuario)
   }
-
   const eliminarUsuarios = (id) => {
     const usuariosActualizados = usuarios.filter((usuario) => usuario.id !== id)
     setUsuarios(usuariosActualizados)
@@ -44,7 +40,6 @@ const UsuarioProvider = ({ children }) => {
       value={{
         usuarios,
         setUsuarios,
-        nuevoUsuario,
         eliminarUsuarios,
         guardarUsuario,
       }}>
@@ -54,5 +49,4 @@ const UsuarioProvider = ({ children }) => {
 }
 
 export { UsuarioProvider }
-
 export default UsuarioContext

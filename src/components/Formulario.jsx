@@ -9,7 +9,7 @@ const Formulario = ({ modalFormulario, handleModal }) => {
   const [address, setAddress] = useState("")
   const [error, setError] = useState("")
 
-  const { nuevoUsuario, guardarUsuario } = useUsuario()
+  const { guardarUsuario } = useUsuario()
 
   const handleNuevoUsuario = (e) => {
     e.preventDefault()
@@ -19,12 +19,14 @@ const Formulario = ({ modalFormulario, handleModal }) => {
       setTimeout(() => {
         setError("")
       }, 1000)
+    } else {
+      const nuevoUsuario = { name, email, address }
+      guardarUsuario(nuevoUsuario)
+
+      setName("")
+      setEmail("")
+      setAddress("")
     }
-    const nuevoUsuario = { name, email, address }
-    guardarUsuario(nuevoUsuario)
-    setName("")
-    setEmail("")
-    setAddress("")
   }
 
   return (

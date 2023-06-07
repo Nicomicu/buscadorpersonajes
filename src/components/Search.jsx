@@ -4,8 +4,8 @@ import Cargando from "./Cargando"
 import PreviewUsuario from "./PreviewUsuario"
 
 const Search = () => {
-  const [search, setSearch] = useState("")
-  const { usuarios, setUsuarios, guardarUsuario } = useUsuario()
+  const [search, setSearch] = useState("") // Valor inicial establecido como una cadena vacía
+  const { usuarios } = useUsuario()
 
   const searcher = (e) => {
     setSearch(e.target.value)
@@ -14,8 +14,9 @@ const Search = () => {
   const resultado = !search
     ? usuarios
     : usuarios.filter((usuario) =>
-        usuario.name.toLowerCase().includes(search.toLocaleLowerCase())
+        usuario.name.toLowerCase().includes(search.toLowerCase())
       )
+
   return (
     <>
       <header className="my-10">
@@ -64,7 +65,7 @@ const Search = () => {
             id={usuario.id}
             name={usuario.name}
             email={usuario.email}
-            address={usuario.address.city}
+            address={usuario.address?.city || usuario.address}
           />
         ))
       ) : (
@@ -75,5 +76,5 @@ const Search = () => {
     </>
   )
 }
-
+//TODO:El problema era que el usuario creado  para acceder a addres es directamente mientras que en el usuario de la appi se accede address.city
 export default Search
