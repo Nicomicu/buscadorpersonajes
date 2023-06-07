@@ -3,21 +3,30 @@ import { Dialog, Transition } from "@headlessui/react"
 import useUsuario from "../hook/useUsuario"
 import Error from "./Error"
 
+const expresion = /^[a-zA-Z0-9._%+-]+@gmail\.com$/
+
 const Formulario = ({ modalFormulario, handleModal }) => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [address, setAddress] = useState("")
-  const [error, setError] = useState("")
+  const [error, setError] = useState({})
 
   const { guardarUsuario } = useUsuario()
 
   const handleNuevoUsuario = (e) => {
     e.preventDefault()
-    if ([name, email, address].includes("")) {
-      setError("error")
 
+    if (!expresion.test(email)) {
+      setError({ msg: "Email incorrecto", error: true })
       setTimeout(() => {
-        setError("")
+        setError({})
+      }, 1000)
+    }
+
+    if ([name, email, address].some((value) => value.trim() === "")) {
+      setError({ msg: "Campos obligatorios", error: true })
+      setTimeout(() => {
+        setError({})
       }, 1000)
     } else {
       const nuevoUsuario = { name, email, address }
@@ -28,6 +37,7 @@ const Formulario = ({ modalFormulario, handleModal }) => {
       setAddress("")
     }
   }
+  const { msg } = error
 
   return (
     <>
@@ -91,7 +101,7 @@ const Formulario = ({ modalFormulario, handleModal }) => {
                       CREA UN USUARIO
                     </Dialog.Title>
 
-                    {error && <Error />}
+                    {msg && <Error error={error} />}
 
                     <form onSubmit={handleNuevoUsuario} className="my-10">
                       <div className="mb-5">
