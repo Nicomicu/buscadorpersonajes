@@ -18,6 +18,7 @@ const PreviewUsuario = ({ name, email, address, id }) => {
             {address}
           </p>
         </div>
+
         <div className="flex items-center">
           <button
             onClick={() => eliminarUsuarios(id)}

@@ -62,7 +62,7 @@ const Search = () => {
         <Spinner />
       ) : (
         <>
-          {usuarios.length
+          {usuarios.length > 0
             ? resultado.map((usuario) => (
                 <PreviewUsuario
                   key={usuario.id}

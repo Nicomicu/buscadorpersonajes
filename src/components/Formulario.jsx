@@ -16,27 +16,30 @@ const Formulario = ({ modalFormulario, handleModal }) => {
   const handleNuevoUsuario = (e) => {
     e.preventDefault()
 
+    if ([name, email, address].includes("")) {
+      setError({ msg: "Campos obligatorios", error: true })
+      setTimeout(() => {
+        setError({})
+      }, 1000)
+      return
+    }
+
     if (!expresion.test(email)) {
       setError({ msg: "Email incorrecto", error: true })
       setTimeout(() => {
         setError({})
       }, 1000)
+      return
     }
 
-    if ([name, email, address].some((value) => value.trim() === "")) {
-      setError({ msg: "Campos obligatorios", error: true })
-      setTimeout(() => {
-        setError({})
-      }, 1000)
-    } else {
-      const nuevoUsuario = { name, email, address }
-      guardarUsuario(nuevoUsuario)
+    const nuevoUsuario = { name, email, address }
+    guardarUsuario(nuevoUsuario)
 
-      setName("")
-      setEmail("")
-      setAddress("")
-    }
+    setName("")
+    setEmail("")
+    setAddress("")
   }
+
   const { msg } = error
 
   return (
