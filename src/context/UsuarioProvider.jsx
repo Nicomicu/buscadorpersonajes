@@ -9,14 +9,13 @@ const UsuarioProvider = ({ children }) => {
   const [cargando, setCargando] = useState(false)
 
   const consultandoApi = async () => {
-    setTimeout(() => {
-      setCargando(true)
-    }, 6000)
-
     try {
+      setCargando(true)
       const { data } = await axios("https://jsonplaceholder.typicode.com/users")
-      setUsuarios(data)
-      setCargando(false)
+      setTimeout(() => {
+        setUsuarios(data)
+        setCargando(false)
+      }, 2000)
     } catch (error) {
       console.log(error)
     }
@@ -40,6 +39,7 @@ const UsuarioProvider = ({ children }) => {
       value={{
         usuarios,
         setUsuarios,
+        cargando,
         eliminarUsuarios,
         guardarUsuario,
       }}>

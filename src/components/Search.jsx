@@ -5,7 +5,7 @@ import PreviewUsuario from "./PreviewUsuario"
 
 const Search = () => {
   const [search, setSearch] = useState("") // Valor inicial establecido como una cadena vacía
-  const { usuarios } = useUsuario()
+  const { usuarios, cargando } = useUsuario()
 
   const searcher = (e) => {
     setSearch(e.target.value)
@@ -58,23 +58,26 @@ const Search = () => {
       <h1 className="mt-20 text-white text-center text-4xl font-black">
         Lista de Usuarios:
       </h1>
-      {usuarios.length ? (
-        resultado.map((usuario) => (
-          <PreviewUsuario
-            key={usuario.id}
-            id={usuario.id}
-            name={usuario.name}
-            email={usuario.email}
-            address={usuario.address?.city || usuario.address}
-          />
-        ))
+      {cargando ? (
+        <Spinner />
       ) : (
-        <p className="text-center text-gray-600 uppercase p-3">
-          <Spinner />
-        </p>
+        <>
+          {usuarios.length
+            ? resultado.map((usuario) => (
+                <PreviewUsuario
+                  key={usuario.id}
+                  id={usuario.id}
+                  name={usuario.name}
+                  email={usuario.email}
+                  address={usuario.address?.city || usuario.address}
+                />
+              ))
+            : null}
+        </>
       )}
     </>
   )
 }
 //TODO:El problema era que el usuario creado  para acceder a addres es directamente mientras que en el usuario de la appi se accede address.city
+
 export default Search
