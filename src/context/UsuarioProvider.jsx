@@ -29,10 +29,6 @@ const UsuarioProvider = ({ children }) => {
     nuevoUsuario.id = generarId()
     setUsuarios([...usuarios, nuevoUsuario])
   }
-  const eliminarUsuarios = (id) => {
-    const usuariosActualizados = usuarios.filter((usuario) => usuario.id !== id)
-    setUsuarios(usuariosActualizados)
-  }
 
   return (
     <UsuarioContext.Provider
@@ -40,7 +36,6 @@ const UsuarioProvider = ({ children }) => {
         usuarios,
         setUsuarios,
         cargando,
-        eliminarUsuarios,
         guardarUsuario,
       }}>
       {children}

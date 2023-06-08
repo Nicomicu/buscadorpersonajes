@@ -4,7 +4,7 @@ import Spinner from "./Spinner.jsx"
 import PreviewUsuario from "./PreviewUsuario"
 
 const Search = () => {
-  const [search, setSearch] = useState("") // Valor inicial establecido como una cadena vacía
+  const [search, setSearch] = useState("")
   const { usuarios, cargando } = useUsuario()
 
   const searcher = (e) => {
