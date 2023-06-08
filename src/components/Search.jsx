@@ -1,6 +1,6 @@
 import { useState } from "react"
 import useUsuario from "../hook/useUsuario.jsx"
-import Cargando from "./Cargando"
+import Spinner from "./Spinner.jsx"
 import PreviewUsuario from "./PreviewUsuario"
 
 const Search = () => {
@@ -70,7 +70,7 @@ const Search = () => {
         ))
       ) : (
         <p className="text-center text-gray-600 uppercase p-3">
-          <Cargando />
+          <Spinner />
         </p>
       )}
     </>

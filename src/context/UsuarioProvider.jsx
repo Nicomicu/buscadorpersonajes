@@ -11,7 +11,7 @@ const UsuarioProvider = ({ children }) => {
   const consultandoApi = async () => {
     setTimeout(() => {
       setCargando(true)
-    }, 5000)
+    }, 6000)
 
     try {
       const { data } = await axios("https://jsonplaceholder.typicode.com/users")
