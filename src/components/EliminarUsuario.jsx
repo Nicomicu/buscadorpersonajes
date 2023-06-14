@@ -13,9 +13,8 @@ const EliminarUsuario = ({ id }) => {
       <button
         onClick={() => eliminarUsuarios(id)}
         type="button"
-        className="
-bg-red-500 content-center right-2 text-white rounded-lg py-1 px-5 shadow-lg uppercase hover:bg-red-600 transition-colors">
-        <div className="justify-between float-left m-1">
+        className="bg-red-500 right-2 w-20 h-10 text-white rounded-lg shadow-lg hover:bg-red-600 transition-colors">
+        <div className="flex justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

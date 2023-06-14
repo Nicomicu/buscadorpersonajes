@@ -24,7 +24,7 @@ const Search = () => {
           Buscador de Usuarios
         </h1>
       </header>
-      <main className="bg-white md:w-2/3 lg:w-3/6 mx-auto shadow-md rounded-lg p-10">
+      <main className="bg-white md:w-2/3 lg:w-3/6 mx-auto shadow-md rounded-lg p-10  ">
         <form>
           <div className="mt-5 mb-3 font-bold text-black uppercase flex justify-center">
             <div>
@@ -35,44 +35,43 @@ const Search = () => {
                 placeholder="Nombre del Usuario"
                 className="w-80 px-50 m-2 py-5 border-none outline-none rounded-xl shadow-lg text-center"
               />
-              <button className="shadow-md bg-gradient-to-r from-purple-500 to bg-indigo-800 rounded-full px-6 h-16 hover:bg-purple-400">
+              <div className="relative">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
-                  stroke="white"
-                  className="w-6 h-6 ">
+                  stroke="black"
+                  className="w-6 h-6 absolute bottom-2 m-5 right-1 ">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                   />
                 </svg>
-              </button>
+              </div>
             </div>
           </div>
         </form>
       </main>
-
-      <h1 className="mt-20 text-white text-center text-4xl font-black">
-        Lista de Usuarios:
-      </h1>
       {cargando ? (
         <Spinner />
       ) : (
         <>
-          {usuarios.length > 0
-            ? resultado.map((usuario) => (
-                <PreviewUsuario
-                  key={usuario.id}
-                  id={usuario.id}
-                  name={usuario.name}
-                  email={usuario.email}
-                  address={usuario.address?.city || usuario.address}
-                />
-              ))
-            : null}
+          <h1 className="mt-20 text-white text-center text-4xl font-black">
+            {resultado.length > 0 ? "Lista de Usuarios:" : "No hay resultados"}
+          </h1>
+
+          {usuarios.length &&
+            resultado.map((usuario) => (
+              <PreviewUsuario
+                key={usuario.id}
+                id={usuario.id}
+                name={usuario.name}
+                email={usuario.email}
+                address={usuario.address?.city || usuario.address}
+              />
+            ))}
         </>
       )}
     </>
